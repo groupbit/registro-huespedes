@@ -1,27 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+//import posada from './ImgPosada.JPG';
 import './App.css';
 import Saludar from './components/saludar';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <Saludar></Saludar>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet"/>
+        <div class="overlay">
+          <h1>Posada Chambery</h1>
+          <h3>Reasons for Choosing US</h3>
+          <p class="no-mostrar">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero nostrum quis, odio veniam itaque ullam debitis qui magnam consequatur ab. Vero nostrum quis, odio veniam itaque ullam debitis qui magnam consequatur ab.</p>
+	        <br></br>
+        </div>
       </header>
+      <p>
+        <Saludar></Saludar>
+      </p>
     </div>
   );
 }
+
+//<img src={posada} />
 
 export default App;
