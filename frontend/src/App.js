@@ -11,8 +11,11 @@ function App() {
         <div class="overlay">
           <h1>Posada Chambery</h1>
           <h3>Reasons for Choosing US</h3>
-          <p class="no-mostrar">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero nostrum quis, odio veniam itaque ullam debitis qui magnam consequatur ab. Vero nostrum quis, odio veniam itaque ullam debitis qui magnam consequatur ab.</p>
-	        <br></br>
+          <div class="no-cel">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero nostrum quis, odio veniam itaque ullam debitis qui magnam consequatur ab. Vero nostrum quis, odio veniam itaque ullam debitis qui magnam consequatur ab.</p>
+	          <br></br >
+          </div>
+          
         </div>
       </header>
       <p>
