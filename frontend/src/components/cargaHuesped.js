@@ -1,4 +1,5 @@
 import React from 'react';
+import "./cargarHuesped.css"
 import { Button } from 'reactstrap';
 import { Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
 
@@ -25,7 +26,7 @@ class cargaHuesped extends React.Component {
 
     render(){ 
         const formulario = 
-            <Form>
+            <Form class="margen-superior">
                 <FormGroup>
                     <Label for="nombre">Ingrese su nombre:</Label>
                     <Input type="text" name="nombre" size="50" id="nombre"
@@ -61,12 +62,13 @@ class cargaHuesped extends React.Component {
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
-                <Button color="danger" onClick={this.cargarHuesped} style="text-aling:center;">
+                <Button color="danger" onClick={this.cargarHuesped}>
                     Aceptar
                 </Button>
             </Form>
         return (
-            <div>
+            <div class="ancho-form">
+                <br></br>
                 {formulario}
             </div>
         );
