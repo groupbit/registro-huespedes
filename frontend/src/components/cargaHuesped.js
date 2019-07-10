@@ -35,35 +35,35 @@ class cargaHuesped extends React.Component {
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="telefono">Ingrese su número de teléfono:</Label>
-                    <Input type="text" name="direccion" size="10" id="direccion"
+                    <Label for="telefono">Número de teléfono:</Label>
+                    <Input type="number" name="direccion" size="10" id="direccion"
                         value={this.state.direccion} onChange={this.handleInputChange}/>
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="dni">Ingrese su número de DNI:</Label>
-                    <Input type="text" name="direccion" size="10" id="direccion"
+                    <Label for="dni">Número de DNI:</Label>
+                    <Input type="number" name="direccion" size="10" id="direccion"
                         value={this.state.dni} onChange={this.handleInputChange}/>
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="hospedar">Ingrese cuantas noches se va a hospedar:</Label>
-                    <Input type="text" name="direccion" size="10" id="direccion"
+                    <Label for="hospedar">Cantidad de noches a hospedarse:</Label>
+                    <Input type="number" name="direccion" size="10" id="direccion"
                         value={this.state.noches} onChange={this.handleInputChange}/>
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="hospedar">Ingrese la cantidad de personas a hospedar:</Label>
-                    <Input type="text" name="direccion" size="10" id="direccion"
+                    <Label for="hospedar">Cantidad de personas a hospedarse:</Label>
+                    <Input type="number" name="direccion" size="10" id="direccion"
                         value={this.state.cantPersonas} onChange={this.handleInputChange}/>
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <Button color="danger" onClick={this.cargarHuesped}>
-                    Aceptar
+                    Registrar
                 </Button>
             </Form>
         return (
