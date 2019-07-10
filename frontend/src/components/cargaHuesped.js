@@ -63,7 +63,7 @@ class cargaHuesped extends React.Component {
                     <FormText></FormText>
                 </FormGroup>
                 <Button color="danger" onClick={this.cargarHuesped}>
-                    Hospedarse
+                    Registrar
                 </Button>
             </Form>
         return (
