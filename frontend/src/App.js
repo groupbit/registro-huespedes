@@ -20,9 +20,7 @@ function App() {
             </div>
           </div>
         </header>
-        <p>
-          <CargarHuespedes></CargarHuespedes>
-        </p>
+       
         <main>
           <Switch>
             <Route path="/hospedarse" exact component={CargarHuespedes} />

@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { Table } from 'reactstrap';
+import './listadoHuesped.css'
 
 
 class listadoHuesped extends React.Component {
@@ -16,18 +17,21 @@ class listadoHuesped extends React.Component {
 
     render() {
         return (
-            <div>
-                <table class="table table-striped table-dark">
+            <div class="ancho-table">
+                <Table>
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Direccion</th>
+                            <th>Teléfono</th>
+                            <th>DNI</th>
+                            <th>Noches</th>
+                            <th>Personas</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.renderRows()}
                     </tbody>
-                </table>
+                </Table>
             </div>
         );
     }
@@ -37,7 +41,10 @@ class listadoHuesped extends React.Component {
             return (
                 <tr key={unHuesped._id}>
                     <td>{unHuesped.nombre}</td>
-                    <td>{unHuesped.direccion}</td>
+                    <td>{unHuesped.telefono}</td>
+                    <td>{unHuesped.dni}</td>
+                    <td>{unHuesped.noches}</td>
+                    <td>{unHuesped.cantPersonas}</td>
                 </tr>
             );
         })
