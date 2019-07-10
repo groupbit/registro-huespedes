@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 import './listadoHuesped.css'
 
 
-class listadoHuesped extends React.Component {
+class ListadoHuespedes extends React.Component {
     constructor(props) {
         super(props);
         this.state = { huespedes: [] }
@@ -37,7 +37,7 @@ class listadoHuesped extends React.Component {
     }
 
     renderRows() {
-        return this.state.huespedes.map((unHuesped, index) => {
+        return this.state.huespedes.map( unHuesped => {
             return (
                 <tr key={unHuesped._id}>
                     <td>{unHuesped.nombre}</td>
@@ -52,4 +52,4 @@ class listadoHuesped extends React.Component {
 
 }
 
-export default listadoHuesped;
+export default ListadoHuespedes;

@@ -2,7 +2,7 @@ import React from 'react';
 //import posada from './ImgPosada.JPG';
 import './App.css';
 import CargarHuespedes from './components/cargaHuesped.js';
-import ListadoHuespedes from './components/listadoHuesped.js';
+import ListadoHuespedes from './components/listadoHuespedes.js';
 import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom"
 
 function App() {
