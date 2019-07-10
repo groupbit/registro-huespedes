@@ -24,7 +24,7 @@ function App() {
         <main>
           <Switch>
             <Route path="/hospedarse" exact component={CargarHuespedes} />
-            <Route path="/listado-huespedes" component={ListadoHuespedes} />
+            <Route path="/huespedes" component={ListadoHuespedes} />
             <Redirect to="/" />
           </Switch>
         </main>
