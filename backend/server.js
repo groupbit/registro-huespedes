@@ -21,6 +21,13 @@ function init() {
     res.status(204).end();  
   })
 
+  server.get("/:type", (req, res) => {
+    home = homes[req.params.type]
+    home.all((allObjects) => {
+        res.json(allObjects) 
+        res.end() })       
+  })
+
   server.get("/saludar", (req, res) => {
       res.json("Hola") 
       res.end()
