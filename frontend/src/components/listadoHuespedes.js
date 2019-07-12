@@ -1,12 +1,16 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 import './listadoHuesped.css'
+import ModificarHuesped from './modificarHuesped.js'
+import HuespedRow from './HuespedRow.js'
 
 
 class ListadoHuespedes extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { huespedes: [] }
+        this.state = { huespedes: [], selected:{} }
+        this.select = this.select.bind(this);
+        this.huespedChange = this.huespedChange.bind(this);
     }
 
     componentWillMount() {
@@ -18,6 +22,9 @@ class ListadoHuespedes extends React.Component {
     render() {
         return (
             <div class="ancho-table">
+                <div>
+                <ModificarHuesped huesped={this.state.selected} huespedChange={this.huespedChange} />
+                </div>
                 <Table>
                     <thead>
                         <tr>
@@ -38,17 +45,20 @@ class ListadoHuespedes extends React.Component {
 
     renderRows() {
         return this.state.huespedes.map( unHuesped => {
-            return (
-                <tr key={unHuesped._id}>
-                    <td>{unHuesped.nombre}</td>
-                    <td>{unHuesped.telefono}</td>
-                    <td>{unHuesped.dni}</td>
-                    <td>{unHuesped.noches}</td>
-                    <td>{unHuesped.cantPersonas}</td>
-                </tr>
+            return(
+                <HuespedRow huesped={unHuesped} selector={this.select} />
             );
         })
     }
+
+    select(unHuesped) {
+        this.setState({selected:unHuesped })
+      }
+  
+      huespedChange(unHuesped) {
+        var newHuespedes = this.state.huespedes.map((item) => (unHuesped._id != item._id) ? item : unHuesped )
+        this.setState({huespedes: newHuespedes, selector:unHuesped, selected: unHuesped})
+      }
 
 }
 
