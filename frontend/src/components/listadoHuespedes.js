@@ -33,6 +33,7 @@ class ListadoHuespedes extends React.Component {
                             <th>DNI</th>
                             <th>Noches</th>
                             <th>Personas</th>
+                            <th>Habitacion</th>
                         </tr>
                     </thead>
                     <tbody>

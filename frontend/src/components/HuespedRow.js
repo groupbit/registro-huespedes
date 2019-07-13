@@ -19,6 +19,7 @@ class HuespedRow extends React.Component {
                 <td>{this.props.huesped.dni}</td>
                 <td>{this.props.huesped.noches}</td>
                 <td>{this.props.huesped.cantPersonas}</td>
+                <td>{this.props.huesped.habitacion}</td>
             </tr>
         );
       

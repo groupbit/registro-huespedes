@@ -75,6 +75,13 @@ class ModificarHuesped extends React.Component {
               <FormFeedback>You will not be able to see this</FormFeedback>
               <FormText></FormText>
           </FormGroup>
+          <FormGroup>
+              <Label for="habitacion">Habitación:</Label>
+              <Input type="text" name="habitacion" size="10" id="habitacion"
+                  value={this.state.huesped.habitacion} onChange={this.handleChange}/>
+              <FormFeedback>You will not be able to see this</FormFeedback>
+              <FormText></FormText>
+          </FormGroup>
           <Button color="danger" onClick={this.handleSubmit}>
               Modificar
           </Button>
