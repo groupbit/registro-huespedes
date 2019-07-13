@@ -24,6 +24,7 @@ class ListadoHuespedes extends React.Component {
             <div class="ancho-table">
                 <div>
                 <ModificarHuesped huesped={this.state.selected} huespedChange={this.huespedChange} />
+                <br></br>
                 </div>
                 <Table>
                     <thead>
