@@ -21,6 +21,12 @@ function init() {
     res.status(204).end();  
   })
 
+  server.put("/:type", (req, res) => {
+    home = homes[req.params.type]
+    home.update(req.body)
+    res.status(204).end();  
+  })
+
   server.get("/:type", (req, res) => {
     home = homes[req.params.type]
     home.all((allObjects) => {
