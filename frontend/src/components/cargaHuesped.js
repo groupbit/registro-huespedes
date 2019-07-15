@@ -71,8 +71,6 @@ class cargaHuesped extends React.Component {
                     <ModalBody>
                         El registro se ha hecho exitosamente
                     </ModalBody>
-                    <ModalFooter>
-                    </ModalFooter>
                 </Modal>
             </Form>
         return (
