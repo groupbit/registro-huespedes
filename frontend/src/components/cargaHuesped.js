@@ -94,7 +94,7 @@ class cargaHuesped extends React.Component {
         var fechaini = new Date(this.state.fechaIngreso);
         var fechafin = new Date(this.state.fechaSalida);
         var diasdif= fechafin.getTime()-fechaini.getTime();
-        this.setState({noches: Math.round(diasdif/(1000*60*60*24))})
+        this.state.noches = Math.round(diasdif/(1000*60*60*24));
     }
 
     cargarHuesped() {
