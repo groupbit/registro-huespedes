@@ -52,13 +52,6 @@ class cargaHuesped extends React.Component {
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="noches">Cantidad de noches a hospedarse:</Label>
-                    <Input type="number" name="noches" size="10" id="noches"
-                        value={this.state.noches} onChange={this.handleInputChange} />
-                    <FormFeedback>You will not be able to see this</FormFeedback>
-                    <FormText></FormText>
-                </FormGroup>
-                <FormGroup>
                     <Label for="cantPersonas">Cantidad de personas a hospedarse:</Label>
                     <Input type="number" name="cantPersonas" size="10" id="cantPersonas"
                         value={this.state.cantPersonas} onChange={this.handleInputChange} />
@@ -97,7 +90,15 @@ class cargaHuesped extends React.Component {
         );
     }
 
+    calcular(){
+        var fechaini = new Date(this.state.fechaIngreso);
+        var fechafin = new Date(this.state.fechaSalida);
+        var diasdif= fechafin.getTime()-fechaini.getTime();
+        this.setState({noches: Math.round(diasdif/(1000*60*60*24))})
+    }
+
     cargarHuesped() {
+        this.calcular();
         var huesped = {
             nombre: this.state.nombre,
             telefono: this.state.telefono,
