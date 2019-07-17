@@ -27,7 +27,7 @@ class ListadoHuespedes extends React.Component {
                     <ModificarHuesped huesped={this.state.selected} huespedChange={this.huespedChange} />
                     <br></br>
                 </div>
-                <Table>
+                <Table hover>
                     <thead>
                         <tr>
                             <th></th>
