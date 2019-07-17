@@ -29,6 +29,7 @@ class ListadoHuespedes extends React.Component {
                 <Table>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Nombre</th>
                             <th>Teléfono</th>
                             <th>DNI</th>

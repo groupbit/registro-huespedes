@@ -34,10 +34,11 @@ function init() {
         res.end() })       
   })
 
-  server.get("/saludar", (req, res) => {
-      res.json("Hola") 
-      res.end()
-  })
+  server.delete("/:type/:id", (req, res) => {
+    home = homes[req.params.type]
+    home.delete(req.params.id)
+    res.status(204).end();  
+  });
 
   server.listen(8888, () => {
     console.log("Server running on port 8888");
