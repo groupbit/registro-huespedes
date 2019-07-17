@@ -21,15 +21,7 @@ class ModificarHuesped extends React.Component {
         this.setState({ huesped: newHuesped });
     }
 
-    calcular(){
-        var fechaini = new Date(this.state.huesped.fechaIngreso);
-        var fechafin = new Date(this.state.huesped.fechaSalida);
-        var diasdif= fechafin.getTime()-fechaini.getTime();
-        this.state.huesped.noches = Math.round(diasdif/(1000*60*60*24));
-    }
-
     handleSubmit(event) {
-        this.calcular();
         fetch('http://localhost:8888/huespedes', {
             method: 'put',
             headers: {

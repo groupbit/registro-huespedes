@@ -4,7 +4,6 @@ import { Button } from 'reactstrap';
 import { Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
-
 class cargaHuesped extends React.Component {
     constructor(props) {
         super(props);
@@ -90,15 +89,7 @@ class cargaHuesped extends React.Component {
         );
     }
 
-    calcular(){
-        var fechaini = new Date(this.state.fechaIngreso);
-        var fechafin = new Date(this.state.fechaSalida);
-        var diasdif= fechafin.getTime()-fechaini.getTime();
-        this.state.noches = Math.round(diasdif/(1000*60*60*24));
-    }
-
     cargarHuesped() {
-        this.calcular();
         var huesped = {
             nombre: this.state.nombre,
             telefono: this.state.telefono,
