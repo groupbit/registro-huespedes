@@ -35,6 +35,8 @@ class ListadoHuespedes extends React.Component {
                             <th>Noches</th>
                             <th>Personas</th>
                             <th>Habitacion</th>
+                            <th>Fecha ingreso</th>
+                            <th>Fecha salida</th>
                         </tr>
                     </thead>
                     <tbody>

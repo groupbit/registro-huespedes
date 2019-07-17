@@ -2,13 +2,14 @@ import React from 'react';
 import "./cargarHuesped.css"
 import { Button } from 'reactstrap';
 import { Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 class cargaHuesped extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { mensaje: "", nombre: "", telefono: "", dni: "", noches: "", cantPersonas: "", modal: false }
+        this.state = { mensaje: "", nombre: "", telefono: "", dni: "", 
+                       noches: "", cantPersonas: "", fechaIngreso: "", 
+                       fechaSalida: "", modal: false }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.cargarHuesped = this.cargarHuesped.bind(this);
     }
@@ -50,16 +51,23 @@ class cargaHuesped extends React.Component {
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="noches">Cantidad de noches a hospedarse:</Label>
-                    <Input type="number" name="noches" size="10" id="noches"
-                        value={this.state.noches} onChange={this.handleInputChange} />
+                    <Label for="cantPersonas">Cantidad de personas a hospedarse:</Label>
+                    <Input type="number" name="cantPersonas" size="10" id="cantPersonas"
+                        value={this.state.cantPersonas} onChange={this.handleInputChange} />
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="cantPersonas">Cantidad de personas a hospedarse:</Label>
-                    <Input type="number" name="cantPersonas" size="10" id="cantPersonas"
-                        value={this.state.cantPersonas} onChange={this.handleInputChange} />
+                    <Label for="fechaIngreso">Fecha de Ingreso:</Label>
+                    <Input type="date" name="fechaIngreso" size="10" id="fechaIngreso"
+                        value={this.state.fechaIngreso} onChange={this.handleInputChange} />
+                    <FormFeedback>You will not be able to see this</FormFeedback>
+                    <FormText></FormText>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="fechaSalida">Fecha de Salida:</Label>
+                    <Input type="date" name="fechaSalida" size="10" id="fechaSalida"
+                        value={this.state.fechaSalida} onChange={this.handleInputChange} />
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
@@ -87,7 +95,9 @@ class cargaHuesped extends React.Component {
             telefono: this.state.telefono,
             dni: this.state.dni,
             noches: this.state.noches,
-            cantPersonas: this.state.cantPersonas
+            cantPersonas: this.state.cantPersonas,
+            fechaIngreso: this.state.fechaIngreso,
+            fechaSalida: this.state.fechaSalida
         }
         console.log(JSON.stringify(huesped))
         fetch(`http://localhost:8888/huespedes`, {
