@@ -38,7 +38,7 @@ class HuespedRow extends React.Component {
           headers:{
             'Content-Type': 'application/json'
           }
-        })
+        }).then(res => this.props.delete(this.props.huesped))
       }
 }
 
