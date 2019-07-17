@@ -8,9 +8,10 @@ import HuespedRow from './HuespedRow.js'
 class ListadoHuespedes extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { huespedes: [], selected:{} }
+        this.state = { huespedes: [], selected: {} }
         this.select = this.select.bind(this);
         this.huespedChange = this.huespedChange.bind(this);
+        this.huespedDelete = this.huespedDelete.bind(this);
     }
 
     componentWillMount() {
@@ -23,12 +24,13 @@ class ListadoHuespedes extends React.Component {
         return (
             <div class="ancho-table">
                 <div>
-                <ModificarHuesped huesped={this.state.selected} huespedChange={this.huespedChange} />
-                <br></br>
+                    <ModificarHuesped huesped={this.state.selected} huespedChange={this.huespedChange} />
+                    <br></br>
                 </div>
-                <Table>
+                <Table hover>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Nombre</th>
                             <th>Teléfono</th>
                             <th>DNI</th>
@@ -39,7 +41,7 @@ class ListadoHuespedes extends React.Component {
                             <th>Fecha salida</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="cursor">
                         {this.renderRows()}
                     </tbody>
                 </Table>
@@ -48,21 +50,26 @@ class ListadoHuespedes extends React.Component {
     }
 
     renderRows() {
-        return this.state.huespedes.map( unHuesped => {
-            return(
-                <HuespedRow huesped={unHuesped} selector={this.select} />
+        return this.state.huespedes.map(unHuesped => {
+            return (
+                <HuespedRow huesped={unHuesped} delete={this.huespedDelete} selector={this.select} />
             );
         })
     }
 
     select(unHuesped) {
-        this.setState({selected:unHuesped })
-      }
-  
-      huespedChange(unHuesped) {
-        var newHuespedes = this.state.huespedes.map((item) => (unHuesped._id != item._id) ? item : unHuesped )
-        this.setState({huespedes: newHuespedes, selector:unHuesped, selected: unHuesped})
-      }
+        this.setState({ selected: unHuesped })
+    }
+
+    huespedChange(unHuesped) {
+        var newHuespedes = this.state.huespedes.map((item) => (unHuesped._id != item._id) ? item : unHuesped)
+        this.setState({ huespedes: newHuespedes, selected: {} })
+    }
+
+    huespedDelete(unHuesped) {
+        var huespedes = this.state.huespedes.filter(item => item._id !== unHuesped._id);
+        this.setState({ huespedes });
+    }
 
 }
 

@@ -7,9 +7,11 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 class cargaHuesped extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { mensaje: "", nombre: "", telefono: "", dni: "", 
-                       noches: "", cantPersonas: "", fechaIngreso: "", 
-                       fechaSalida: "", modal: false }
+        this.state = {
+            mensaje: "", nombre: "", telefono: "", dni: "",
+            noches: "", cantPersonas: "", fechaIngreso: "",
+            fechaSalida: "", modal: false
+        }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.cargarHuesped = this.cargarHuesped.bind(this);
     }
@@ -28,52 +30,50 @@ class cargaHuesped extends React.Component {
 
     render() {
         const formulario =
-            <Form class="margen-superior">
+            <Form class="margen-superior" onSubmit={this.cargarHuesped}>
                 <FormGroup>
                     <Label for="nombre">Ingrese su nombre:</Label>
                     <Input type="text" name="nombre" size="50" id="nombre"
-                        value={this.state.nombre} onChange={this.handleInputChange} />
+                        value={this.state.nombre} onChange={this.handleInputChange} required />
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
                     <Label for="telefono">Número de teléfono:</Label>
                     <Input type="number" name="telefono" size="10" id="telefono"
-                        value={this.state.direccion} onChange={this.handleInputChange} />
+                        value={this.state.direccion} onChange={this.handleInputChange} required />
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
                     <Label for="dni">Número de DNI:</Label>
                     <Input type="number" name="dni" size="8" id="dni"
-                        value={this.state.dni} onChange={this.handleInputChange} />
+                        value={this.state.dni} onChange={this.handleInputChange} required />
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
                     <Label for="cantPersonas">Cantidad de personas a hospedarse:</Label>
                     <Input type="number" name="cantPersonas" size="10" id="cantPersonas"
-                        value={this.state.cantPersonas} onChange={this.handleInputChange} />
+                        value={this.state.cantPersonas} onChange={this.handleInputChange} required />
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
                     <Label for="fechaIngreso">Fecha de Ingreso:</Label>
                     <Input type="date" name="fechaIngreso" size="10" id="fechaIngreso"
-                        value={this.state.fechaIngreso} onChange={this.handleInputChange} />
+                        value={this.state.fechaIngreso} onChange={this.handleInputChange} required />
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
                 <FormGroup>
                     <Label for="fechaSalida">Fecha de Salida:</Label>
                     <Input type="date" name="fechaSalida" size="10" id="fechaSalida"
-                        value={this.state.fechaSalida} onChange={this.handleInputChange} />
+                        value={this.state.fechaSalida} onChange={this.handleInputChange} required />
                     <FormFeedback>You will not be able to see this</FormFeedback>
                     <FormText></FormText>
                 </FormGroup>
-                <Button color="danger" onClick={this.cargarHuesped}>
-                    Registrar
-                </Button>
+                <Button type="submit" color="danger">Registrar</Button>
                 <Modal isOpen={this.state.modal} className={this.props.className}>
                     <ModalHeader>Registración</ModalHeader>
                     <ModalBody>
@@ -89,7 +89,7 @@ class cargaHuesped extends React.Component {
         );
     }
 
-    cargarHuesped() {
+    cargarHuesped(event) {
         var huesped = {
             nombre: this.state.nombre,
             telefono: this.state.telefono,
@@ -101,16 +101,16 @@ class cargaHuesped extends React.Component {
         }
         console.log(JSON.stringify(huesped))
         fetch(`http://localhost:8888/huespedes`, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(huesped), // data can be `string` or {object}!
+            method: 'POST', 
+            body: JSON.stringify(huesped), 
             headers: {
                 'Content-Type': 'application/json'
             }
         })
             .then(() => this.setState(prevState => ({
                 modal: !prevState.modal
-              })))
-        ///.then(() => this.actualizarLista())
+            })))
+        event.preventDefault();
     }
 
 }
