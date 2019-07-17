@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import { diasDeHospedaje } from '../models/huesped';
 
 class HuespedRow extends React.Component {
 
@@ -21,9 +22,11 @@ class HuespedRow extends React.Component {
                 <td>{this.props.huesped.nombre}</td>
                 <td>{this.props.huesped.telefono}</td>
                 <td>{this.props.huesped.dni}</td>
-                <td>{this.props.huesped.noches}</td>
+                <td>{diasDeHospedaje(this.props.huesped)}</td>
                 <td>{this.props.huesped.cantPersonas}</td>
                 <td>{this.props.huesped.habitacion}</td>
+                <td>{this.props.huesped.fechaIngreso}</td>
+                <td>{this.props.huesped.fechaSalida}</td>
             </tr>
         );
 
