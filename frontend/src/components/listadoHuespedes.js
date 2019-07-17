@@ -41,7 +41,7 @@ class ListadoHuespedes extends React.Component {
                             <th>Fecha salida</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="cursor">
                         {this.renderRows()}
                     </tbody>
                 </Table>
