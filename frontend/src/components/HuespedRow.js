@@ -30,7 +30,7 @@ class HuespedRow extends React.Component {
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Eliminar</ModalHeader>
                         <ModalBody>
-                            ¿Eliminar el huesped seleccionado?
+                            ¿Eliminar el huesped seleccionado {this.props.huesped.nombre}?
                         </ModalBody>
                         <ModalFooter>
                             <Button color="primary" onClick={() => this.eliminarHuesped(this.props.huesped._id)}>Eliminar</Button>{' '}
@@ -54,7 +54,7 @@ class HuespedRow extends React.Component {
     eliminarHuesped(idHuesped) {
         this.toggle();
         fetch(`http://localhost:8888/huespedes/${idHuesped}`, {
-            method: 'DELETE', // or 'PUT'
+            method: 'DELETE', 
             headers: {
                 'Content-Type': 'application/json'
             }
