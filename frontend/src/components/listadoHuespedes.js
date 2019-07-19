@@ -12,12 +12,14 @@ class ListadoHuespedes extends React.Component {
         this.select = this.select.bind(this);
         this.huespedChange = this.huespedChange.bind(this);
         this.huespedDelete = this.huespedDelete.bind(this);
+        this.ordenarFecha = this.ordenarFecha.bind(this);
     }
 
     componentWillMount() {
         fetch(`http://localhost:8888/huespedes`)
             .then(res => res.json())
             .then(hps => this.setState({ huespedes: hps }));
+            
     }
 
     render() {
@@ -37,7 +39,7 @@ class ListadoHuespedes extends React.Component {
                             <th>Noches</th>
                             <th>Personas</th>
                             <th>Habitacion</th>
-                            <th>Fecha ingreso</th>
+                            <th onClick={this.ordenarFecha}>Fecha ingreso</th>
                             <th>Fecha salida</th>
                         </tr>
                     </thead>
@@ -47,6 +49,11 @@ class ListadoHuespedes extends React.Component {
                 </Table>
             </div>
         );
+    }
+
+    ordenarFecha(){
+        this.setState({huespedes: this.state.huespedes.sort((a,b) => new Date(a.fechaIngreso) - new Date(b.fechaIngreso))});
+        console.log("Ejecutando");
     }
 
     renderRows() {
