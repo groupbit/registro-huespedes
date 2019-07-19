@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import { diasDeHospedaje } from '../models/huesped';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { FaTrashAlt } from 'react-icons/fa';
 
 class HuespedRow extends React.Component {
 
@@ -26,7 +26,7 @@ class HuespedRow extends React.Component {
         return (
             <tr key={this.props.huesped._id} onClick={this.selectHuesped}>
                 <td>
-                    <Button color="danger" close onClick={this.toggle}/>
+                    <FaTrashAlt onClick={this.toggle}/>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Eliminar</ModalHeader>
                         <ModalBody>

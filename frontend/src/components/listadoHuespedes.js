@@ -3,12 +3,13 @@ import { Table } from 'reactstrap';
 import './listadoHuesped.css'
 import ModificarHuesped from './modificarHuesped.js'
 import HuespedRow from './HuespedRow.js'
+import { FaChevronDown, FaTrashAlt } from 'react-icons/fa';
 
 
 class ListadoHuespedes extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { huespedes: [], selected: {} }
+        this.state = { huespedes: [], selected: {} , ordenDeFecha:true }
         this.select = this.select.bind(this);
         this.huespedChange = this.huespedChange.bind(this);
         this.huespedDelete = this.huespedDelete.bind(this);
@@ -39,7 +40,7 @@ class ListadoHuespedes extends React.Component {
                             <th>Noches</th>
                             <th>Personas</th>
                             <th>Habitacion</th>
-                            <th onClick={this.ordenarFecha}>Fecha ingreso</th>
+                            <th>Fecha ingreso <FaChevronDown  class="cursor" onClick={this.ordenarFecha}/></th>
                             <th>Fecha salida</th>
                         </tr>
                     </thead>
@@ -52,8 +53,13 @@ class ListadoHuespedes extends React.Component {
     }
 
     ordenarFecha(){
-        this.setState({huespedes: this.state.huespedes.sort((a,b) => new Date(a.fechaIngreso) - new Date(b.fechaIngreso))});
-        console.log("Ejecutando");
+        if(this.state.ordenDeFecha){
+            this.setState({huespedes: this.state.huespedes.sort((a,b) => new Date(a.fechaIngreso) - new Date(b.fechaIngreso))});   
+            this.setState({ordenDeFecha: false});
+        }else{
+            this.setState({huespedes: this.state.huespedes.sort((a,b) => new Date(b.fechaIngreso) - new Date(a.fechaIngreso))});
+            this.setState({ordenDeFecha: true});
+        }
     }
 
     renderRows() {
