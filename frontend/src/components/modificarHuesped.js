@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class ModificarHuesped extends React.Component {
 
@@ -8,11 +9,19 @@ class ModificarHuesped extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.state = { huesped: props.huesped }
+        this.toggle = this.toggle.bind(this);
+        this.state = { huesped: props.huesped, huespedes: props.huespedes, modal: false }
+    }
+
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+        this.render();
     }
 
     componentWillReceiveProps(props) {
-        this.setState({ huesped: props.huesped })
+        this.setState({ huesped: props.huesped, huespedes: props.huespedes })
     }
 
     handleChange(event) {
@@ -22,22 +31,38 @@ class ModificarHuesped extends React.Component {
     }
 
     handleSubmit(event) {
-        fetch('http://localhost:8888/huespedes', {
-            method: 'put',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state.huesped)
-        }).then(res => this.props.huespedChange(this.state.huesped))
-            .catch(res => console.log("ERROR"));
+        try {
+            this.comprobarHabitacion();
+            fetch('http://localhost:8888/huespedes', {
+                method: 'put',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.state.huesped)
+            }).then(res => this.props.huespedChange(this.state.huesped))
+                .catch(res => console.log("ERROR"));
 
-        event.preventDefault();
+            event.preventDefault();
+        }
+        catch (err) {
+            this.setState({ modal: true });
+        }
+
+    }
+
+    comprobarHabitacion() {
+        var habitacionesReservadas =
+            this.state.huespedes.filter((huesped) => this.state.huesped.habitacion == huesped.habitacion)
+                                .filter((huesped) => this.state.huesped.fechaIngreso == huesped.fechaIngreso);
+        if (habitacionesReservadas.length != 0) {
+            console.log(habitacionesReservadas.length)
+            throw ""
+        }
     }
 
     render() {
         return (
-
             <Form class="margen-superior">
                 <FormGroup>
                     <Label for="nombre">Ingrese su nombre:</Label>
@@ -91,6 +116,15 @@ class ModificarHuesped extends React.Component {
                 <Button color="danger" onClick={this.handleSubmit}>
                     Modificar
           </Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Eliminar</ModalHeader>
+                    <ModalBody>
+                        La habitación se encuentra ocupada
+                        </ModalBody>
+                    <ModalFooter>
+                        <Button color="danger" onClick={this.toggle}>Ok</Button>
+                    </ModalFooter>
+                </Modal>
             </Form>
         );
     }

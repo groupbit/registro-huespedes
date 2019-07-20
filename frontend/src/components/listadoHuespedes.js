@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 import './listadoHuesped.css'
 import ModificarHuesped from './modificarHuesped.js'
 import HuespedRow from './HuespedRow.js'
-import { FaChevronDown, FaTrashAlt } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 
 class ListadoHuespedes extends React.Component {
@@ -19,7 +19,7 @@ class ListadoHuespedes extends React.Component {
     componentWillMount() {
         fetch(`http://localhost:8888/huespedes`)
             .then(res => res.json())
-            .then(hps => this.setState({ huespedes: hps }));
+            .then(hps => {this.setState({ huespedes: hps }); this.ocultadElementos();});
             
     }
 
@@ -27,7 +27,7 @@ class ListadoHuespedes extends React.Component {
         return (
             <div class="ancho-table">
                 <div>
-                    <ModificarHuesped huesped={this.state.selected} huespedChange={this.huespedChange} />
+                    <ModificarHuesped huespedes={this.state.huespedes} huesped={this.state.selected} huespedChange={this.huespedChange} />
                     <br></br>
                 </div>
                 <Table hover>
@@ -40,7 +40,10 @@ class ListadoHuespedes extends React.Component {
                             <th>Noches</th>
                             <th>Personas</th>
                             <th>Habitacion</th>
-                            <th>Fecha ingreso <FaChevronDown  class="cursor" onClick={this.ordenarFecha}/></th>
+                            <th>Fecha ingreso 
+                                <FaChevronDown id="ordenar" class="cursor" onClick={this.ordenarFecha}/>
+                                <FaChevronUp id="ordenar2" class="cursor" onClick={this.ordenarFecha}/>    
+                            </th>
                             <th>Fecha salida</th>
                         </tr>
                     </thead>
@@ -52,13 +55,21 @@ class ListadoHuespedes extends React.Component {
         );
     }
 
+    ocultadElementos(){
+        document.getElementById('ordenar2').style.display = 'none';
+    }
+
     ordenarFecha(){
         if(this.state.ordenDeFecha){
             this.setState({huespedes: this.state.huespedes.sort((a,b) => new Date(a.fechaIngreso) - new Date(b.fechaIngreso))});   
             this.setState({ordenDeFecha: false});
+            document.getElementById('ordenar').style.display = 'none';
+            document.getElementById('ordenar2').style.display = 'inline';
         }else{
             this.setState({huespedes: this.state.huespedes.sort((a,b) => new Date(b.fechaIngreso) - new Date(a.fechaIngreso))});
             this.setState({ordenDeFecha: true});
+            document.getElementById('ordenar').style.display = 'inline';
+            document.getElementById('ordenar2').style.display = 'none';
         }
     }
 
