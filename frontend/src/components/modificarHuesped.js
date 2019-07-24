@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import _ from 'lodash';
 
 class ModificarHuesped extends React.Component {
 
@@ -10,7 +11,8 @@ class ModificarHuesped extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.toggle = this.toggle.bind(this);
-        this.state = { huesped: props.huesped, huespedes: props.huespedes, modal: false }
+        this.ocupadoPor = this.ocupadoPor.bind(this);
+        this.state = { huesped: props.huesped, huespedes: props.huespedes, modal: false , nombreOcupa:""}
     }
 
     toggle() {
@@ -53,12 +55,15 @@ class ModificarHuesped extends React.Component {
 
     comprobarHabitacion() {
         var habitacionesReservadas =
-            this.state.huespedes.filter((huesped) => this.state.huesped.habitacion == huesped.habitacion)
-                                .filter((huesped) => this.state.huesped.fechaIngreso == huesped.fechaIngreso);
+        _.filter(this.state.huespedes, {'habitacion': this.state.huesped.habitacion, 'fechaIngreso': this.state.huesped.fechaIngreso});
         if (habitacionesReservadas.length != 0) {
-            console.log(habitacionesReservadas.length)
+            this.ocupadoPor();
             throw ""
         }
+    }
+
+    ocupadoPor(){
+       this.setState({nombreOcupa: _.find(this.state.huespedes, ['habitacion', this.state.huesped.habitacion]).nombre});
     }
 
     render() {
@@ -119,7 +124,7 @@ class ModificarHuesped extends React.Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Eliminar</ModalHeader>
                     <ModalBody>
-                        La habitación se encuentra ocupada
+                        La habitación se encuentra ocupada por {this.state.nombreOcupa}
                         </ModalBody>
                     <ModalFooter>
                         <Button color="danger" onClick={this.toggle}>Ok</Button>

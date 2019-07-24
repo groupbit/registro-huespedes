@@ -4,7 +4,7 @@ import './listadoHuesped.css'
 import ModificarHuesped from './modificarHuesped.js'
 import HuespedRow from './HuespedRow.js'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-
+import _ from 'lodash';
 
 class ListadoHuespedes extends React.Component {
     constructor(props) {
@@ -61,12 +61,12 @@ class ListadoHuespedes extends React.Component {
 
     ordenarFecha(){
         if(this.state.ordenDeFecha){
-            this.setState({huespedes: this.state.huespedes.sort((a,b) => new Date(a.fechaIngreso) - new Date(b.fechaIngreso))});   
+            this.setState({huespedes: _.orderBy(this.state.huespedes, ['fechaIngreso'], ['asc'])}); 
             this.setState({ordenDeFecha: false});
             document.getElementById('ordenar').style.display = 'none';
             document.getElementById('ordenar2').style.display = 'inline';
         }else{
-            this.setState({huespedes: this.state.huespedes.sort((a,b) => new Date(b.fechaIngreso) - new Date(a.fechaIngreso))});
+            this.setState({huespedes: _.orderBy(this.state.huespedes, ['fechaIngreso'], ['desc'])}); 
             this.setState({ordenDeFecha: true});
             document.getElementById('ordenar').style.display = 'inline';
             document.getElementById('ordenar2').style.display = 'none';
