@@ -24,3 +24,16 @@ Una vez registrado tendremos que crear una APP en la solapa Applicatios de Auth0
 
 En esta sección vamos a configurar nuestra aplicación, ésta contará con ciertos parametros autogenerados que precisaremos más adelante como el **Domain** y el **Client ID**.
 
+### Configuración de Auth0
+#### Configurar Callback URLs
+
+Una Callback URL es una URL en tu aplicación donde Auth0 redirige al usuario después de que se haya autenticado. En otras palabras es la página a la que iremos una vez hayamos iniciado sesión.
+
+Nos iremos a aplicaciones -> settings
+![](https://user-images.githubusercontent.com/32805369/66613507-1fa76380-eb9c-11e9-9d50-96bf7ddf720b.png)
+Una vez aquí vamos a Allowed Callback URLs y escribiremos la URL a la que nos redireccionará una vez que nos hayamos logueado.
+
+![](https://user-images.githubusercontent.com/32805369/66613785-05ba5080-eb9d-11e9-985a-4c87efd68051.png)
+
+#### Configuar Logouts URLs
+
