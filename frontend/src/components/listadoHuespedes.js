@@ -1,8 +1,8 @@
 import React from 'react';
 import { Table } from 'reactstrap';
-import './listadoHuesped.css'
-import ModificarHuesped from './modificarHuesped.js'
-import HuespedRow from './HuespedRow.js'
+import './listadoHuesped.css';
+import ModificarHuesped from './modificarHuesped.js';
+import HuespedRow from './HuespedRow.js';
 
 
 class ListadoHuespedes extends React.Component {
@@ -22,7 +22,7 @@ class ListadoHuespedes extends React.Component {
 
     render() {
         return (
-            <div class="ancho-table">
+            <div className="ancho-table">
                 <div>
                     <ModificarHuesped huesped={this.state.selected} huespedChange={this.huespedChange} />
                     <br></br>
@@ -41,7 +41,7 @@ class ListadoHuespedes extends React.Component {
                             <th>Fecha salida</th>
                         </tr>
                     </thead>
-                    <tbody class="cursor">
+                    <tbody className="cursor">
                         {this.renderRows()}
                     </tbody>
                 </Table>

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./cargarHuesped.css"
+import "./cargarHuesped.css";
 import { Button } from 'reactstrap';
 import { Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
@@ -29,8 +29,12 @@ class cargaHuesped extends React.Component {
     }
 
     render() {
-        const formulario =
-            <Form class="margen-superior" onSubmit={this.cargarHuesped}>
+        
+            
+        return (
+            <div className="ancho-form">
+                <br></br>
+                <Form className="margen-superior" onSubmit={this.cargarHuesped}>
                 <FormGroup>
                     <Label for="nombre">Ingrese su nombre:</Label>
                     <Input type="text" name="nombre" size="50" id="nombre"
@@ -81,10 +85,6 @@ class cargaHuesped extends React.Component {
                     </ModalBody>
                 </Modal>
             </Form>
-        return (
-            <div class="ancho-form">
-                <br></br>
-                {formulario}
             </div>
         );
     }

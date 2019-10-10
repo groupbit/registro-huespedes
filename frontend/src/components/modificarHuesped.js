@@ -38,7 +38,7 @@ class ModificarHuesped extends React.Component {
     render() {
         return (
 
-            <Form class="margen-superior">
+            <Form className="margen-superior">
                 <FormGroup>
                     <Label for="nombre">Ingrese su nombre:</Label>
                     <Input type="text" name="nombre" size="50" id="nombre"
